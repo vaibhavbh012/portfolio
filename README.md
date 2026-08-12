@@ -1,6 +1,8 @@
-# Vaibhav Bhardwaj — AI & Data Science Portfolio Website
+# 🚀 Vaibhav Bhardwaj — Interactive AI / Data Science Portfolio
 
-A modern, high-performance, interactive personal portfolio website for **Vaibhav Bhardwaj** (Computer Science Undergraduate specializing in Data Science at UPES).
+> **Live Website:** [https://portfoliovbc.vercel.app/](https://portfoliovbc.vercel.app/)
+
+A modern, high-performance personal portfolio website for **Vaibhav Bhardwaj**, Computer Science Undergraduate (Data Science) at UPES, Dehradun.
 
 Built with **Next.js 16 (App Router)**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, and **Lucide React**. Fully responsive, SEO-optimized, and production-ready for deployment on Vercel.
 
