@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import Sidebar from "@/components/Sidebar";
-import MobileNav from "@/components/MobileNav";
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
@@ -15,37 +14,34 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#05070b] text-[#f1f5f9] flex flex-col lg:flex-row antialiased selection:bg-blue-600/30 selection:text-cyan-300">
-      {/* Persistent Left Sidebar (Desktop) */}
-      <Sidebar />
+    <div className="min-h-screen bg-[#05070b] text-[#f1f5f9] flex flex-col items-center justify-start antialiased selection:bg-blue-600/30 selection:text-cyan-300">
+      {/* Top Floating / Sticky Portrait Navbar */}
+      <Navbar />
 
-      {/* Mobile Top Navigation Header */}
-      <MobileNav />
-
-      {/* Main Content Scroll Area (Right Side on Desktop) */}
-      <main className="flex-1 lg:ml-64 xl:ml-72 min-w-0 min-h-screen flex flex-col bg-[#05070b]">
-        {/* Split-Screen Hero */}
+      {/* Main Centered Portrait Column */}
+      <main className="w-full flex flex-col items-center">
+        {/* Centered Portrait Hero */}
         <Hero />
 
-        {/* Asymmetric 01 About Section */}
+        {/* 01 About Section */}
         <About />
 
-        {/* Stacked 02 Experience Section */}
+        {/* 02 Experience Section */}
         <Experience />
 
-        {/* Bento Grid 03 Projects Section (Centerpiece) */}
+        {/* 03 Featured Projects Section */}
         <Projects />
 
-        {/* Technical 04 Skills Matrix Dashboard */}
+        {/* 04 Technical Skills Section */}
         <Skills />
 
-        {/* Credentials & 05 Achievements Section (LeetCode & Certs) */}
+        {/* 05 Credentials & Achievements Section */}
         <Achievements />
 
-        {/* Academic Profile 06 Education Section */}
+        {/* 06 Education Section */}
         <Education />
 
-        {/* Split-Screen 07 Contact Section */}
+        {/* 07 Contact Section */}
         <Contact />
 
         {/* Minimalist Footer */}

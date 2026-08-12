@@ -11,25 +11,23 @@ export default function Education() {
   const schoolEducation = education.slice(1);
 
   return (
-    <section id="education" className="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#172233]">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
-        {/* Left Column: Index & Title */}
-        <div className="lg:col-span-4 flex flex-col justify-start">
-          <div className="lg:sticky lg:top-24">
-            <span className="font-mono text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-800 select-none block mb-0.5 sm:mb-1">
-              06
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Education
-            </h2>
-            <p className="text-xs font-mono text-slate-400 mt-1 sm:mt-2">
-              Academic foundation & specialization in Data Science
-            </p>
-          </div>
+    <section id="education" className="w-full py-16 px-4 sm:px-6 border-b border-[#172233]">
+      <div className="max-w-xl sm:max-w-2xl mx-auto flex flex-col">
+        {/* Section Header */}
+        <div className="text-center mb-8">
+          <span className="font-mono text-xs text-blue-400 font-bold uppercase tracking-widest block mb-1">
+            06 • Academics
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Education
+          </h2>
+          <p className="text-xs font-mono text-slate-400 mt-1">
+            Academic foundation & Data Science specialization
+          </p>
         </div>
 
-        {/* Right Column: Academic Profile Cards */}
-        <div className="lg:col-span-8 space-y-5 sm:space-y-6">
+        {/* Academic Profile Cards */}
+        <div className="space-y-4">
           {/* Primary University Profile Card */}
           {university && (
             <motion.div
@@ -87,8 +85,8 @@ export default function Education() {
             </motion.div>
           )}
 
-          {/* Secondary Schooling Cards (1 Column on Mobile, 2 on Desktop) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+          {/* Secondary Schooling Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {schoolEducation.map((edu, idx) => (
               <motion.div
                 key={idx}

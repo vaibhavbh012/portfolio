@@ -49,63 +49,58 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#172233]">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
-        {/* Left Column: Section Index & Title */}
-        <div className="lg:col-span-4 flex flex-col justify-start">
-          <div className="lg:sticky lg:top-24">
-            <span className="font-mono text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-800 select-none block mb-0.5 sm:mb-1">
-              01
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              About
-            </h2>
-            <p className="text-xs font-mono text-slate-400 mt-1 sm:mt-2">
-              Background, focus areas, and technical core
-            </p>
-          </div>
+    <section id="about" className="w-full py-16 px-4 sm:px-6 border-b border-[#172233]">
+      <div className="max-w-xl sm:max-w-2xl mx-auto flex flex-col">
+        {/* Section Header */}
+        <div className="text-center mb-8">
+          <span className="font-mono text-xs text-blue-400 font-bold uppercase tracking-widest block mb-1">
+            01 • Overview
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            About Me
+          </h2>
+          <p className="text-xs font-mono text-slate-400 mt-1">
+            Background, focus areas, and technical core
+          </p>
         </div>
 
-        {/* Right Column: Narrative & Focus Cards */}
-        <div className="lg:col-span-8 space-y-6 sm:space-y-8">
-          {/* Narrative Content Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="p-5 sm:p-7 rounded-2xl bg-[#0b1018] border border-[#172233] shadow-lg"
-          >
-            <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed">
-              {personalInfo.aboutDescription}
-            </p>
-          </motion.div>
+        {/* Narrative Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="p-5 sm:p-6 rounded-2xl bg-[#0b1018] border border-[#172233] shadow-lg mb-6"
+        >
+          <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+            {personalInfo.aboutDescription}
+          </p>
+        </motion.div>
 
-          {/* Compact Focus Cards (1 Column on Mobile, 2 on Tablet/Desktop) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
-            {coreFocusAreas.map((area, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: idx * 0.05 }}
-                className="p-4 rounded-xl bg-[#0b1018] border border-[#172233] hover:border-[#1e2e47] transition-colors flex flex-col justify-between"
-              >
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className="p-1.5 rounded-lg bg-[#0f1724] border border-[#1e2e47]">
-                    {area.icon}
-                  </div>
-                  <h3 className="text-xs sm:text-sm font-bold text-white font-mono">
-                    {area.title}
-                  </h3>
+        {/* Compact Focus Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {coreFocusAreas.map((area, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: idx * 0.05 }}
+              className="p-4 rounded-xl bg-[#0b1018] border border-[#172233] hover:border-[#1e2e47] transition-colors flex flex-col justify-between"
+            >
+              <div className="flex items-center gap-2.5 mb-1.5">
+                <div className="p-1.5 rounded-lg bg-[#0f1724] border border-[#1e2e47]">
+                  {area.icon}
                 </div>
-                <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed font-normal">
-                  {area.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+                <h3 className="text-xs sm:text-sm font-bold text-white font-mono">
+                  {area.title}
+                </h3>
+              </div>
+              <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed font-normal">
+                {area.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

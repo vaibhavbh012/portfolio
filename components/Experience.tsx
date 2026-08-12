@@ -2,36 +2,30 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  Calendar,
-  MapPin,
-  CheckCircle2,
-} from "lucide-react";
+import { Calendar } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 
 export default function Experience() {
   const { experience } = portfolioData;
 
   return (
-    <section id="experience" className="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#172233]">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
-        {/* Left Column: Section Index & Title */}
-        <div className="lg:col-span-4 flex flex-col justify-start">
-          <div className="lg:sticky lg:top-24">
-            <span className="font-mono text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-800 select-none block mb-0.5 sm:mb-1">
-              02
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Experience
-            </h2>
-            <p className="text-xs font-mono text-slate-400 mt-1 sm:mt-2">
-              Industry internships & applied data science track record
-            </p>
-          </div>
+    <section id="experience" className="w-full py-16 px-4 sm:px-6 border-b border-[#172233]">
+      <div className="max-w-xl sm:max-w-2xl mx-auto flex flex-col">
+        {/* Section Header */}
+        <div className="text-center mb-8">
+          <span className="font-mono text-xs text-blue-400 font-bold uppercase tracking-widest block mb-1">
+            02 • Professional Journey
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Work Experience
+          </h2>
+          <p className="text-xs font-mono text-slate-400 mt-1">
+            Industry internships & applied data science track record
+          </p>
         </div>
 
-        {/* Right Column: Stacked Experience Cards */}
-        <div className="lg:col-span-8 space-y-6">
+        {/* Stacked Experience Cards */}
+        <div className="space-y-6">
           {experience.map((exp, idx) => (
             <motion.div
               key={idx}
@@ -41,7 +35,7 @@ export default function Experience() {
               transition={{ duration: 0.4 }}
               className="p-5 sm:p-7 rounded-2xl bg-[#0b1018] border border-[#172233] hover:border-[#1e2e47] shadow-xl transition-all"
             >
-              {/* Top Row: Company & Metadata */}
+              {/* Company & Role Header */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-4 border-b border-[#172233]">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#0f1724] border border-[#1e2e47] flex items-center justify-center font-mono font-black text-sm sm:text-base text-blue-400 shrink-0">
@@ -75,7 +69,7 @@ export default function Experience() {
                 {exp.description}
               </p>
 
-              {/* Technical Metrics Summary Bar (Mobile: Stacked, Desktop: 3-Col) */}
+              {/* Metrics Summary Bar */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-4 p-3 rounded-xl bg-[#070b12] border border-[#172233]">
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase font-mono text-slate-500">Corpus Volume</span>
@@ -106,12 +100,12 @@ export default function Experience() {
                 </ul>
               </div>
 
-              {/* Technology Tags (Natural Wrap) */}
+              {/* Technology Tags */}
               <div className="pt-3 border-t border-[#172233] flex flex-wrap gap-1.5">
                 {exp.techStack.map((tech, tIdx) => (
                   <span
                     key={tIdx}
-                    className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-[#070b12] border border-[#172233] text-[10px] sm:text-[11px] font-mono text-slate-300"
+                    className="px-2.5 py-1 rounded-lg bg-[#070b12] border border-[#172233] text-[10px] sm:text-[11px] font-mono text-slate-300"
                   >
                     {tech}
                   </span>

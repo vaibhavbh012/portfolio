@@ -14,26 +14,23 @@ export default function Achievements() {
   const { achievements, certifications } = portfolioData;
 
   return (
-    <section id="achievements" className="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#172233]">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
-        {/* Left Column: Index & Title */}
-        <div className="lg:col-span-4 flex flex-col justify-start">
-          <div className="lg:sticky lg:top-24">
-            <span className="font-mono text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-800 select-none block mb-0.5 sm:mb-1">
-              05
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Credentials & Achievements
-            </h2>
-            <p className="text-xs font-mono text-slate-400 mt-1 sm:mt-2">
-              Competitive programming benchmarks and verified certifications
-            </p>
-          </div>
+    <section id="achievements" className="w-full py-16 px-4 sm:px-6 border-b border-[#172233]">
+      <div className="max-w-xl sm:max-w-2xl mx-auto flex flex-col">
+        {/* Section Header */}
+        <div className="text-center mb-8">
+          <span className="font-mono text-xs text-blue-400 font-bold uppercase tracking-widest block mb-1">
+            05 • Credentials
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Achievements & Certifications
+          </h2>
+          <p className="text-xs font-mono text-slate-400 mt-1">
+            Competitive programming benchmarks and verified credentials
+          </p>
         </div>
 
-        {/* Right Column: Achievements & Certs Cards */}
-        <div className="lg:col-span-8 space-y-5 sm:space-y-6">
-          {/* LeetCode Competitive Programming Card */}
+        {/* LeetCode Competitive Programming Card */}
+        <div className="space-y-5">
           {achievements.map((ach, idx) => (
             <motion.div
               key={idx}
@@ -101,7 +98,7 @@ export default function Achievements() {
               <span>Verified Industry Certifications</span>
             </h3>
 
-            <div className="space-y-2.5 sm:space-y-3">
+            <div className="space-y-2.5">
               {certifications.map((cert, idx) => (
                 <motion.div
                   key={idx}
@@ -109,7 +106,7 @@ export default function Achievements() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
-                  className="p-3.5 sm:p-4 md:p-5 rounded-xl bg-[#0b1018] border border-[#172233] hover:border-[#1e2e47] flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition-colors"
+                  className="p-3.5 sm:p-4 rounded-xl bg-[#0b1018] border border-[#172233] hover:border-[#1e2e47] flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition-colors"
                 >
                   <div className="flex items-center gap-2.5 sm:gap-3">
                     <div className="p-1.5 sm:p-2 rounded-lg bg-[#0f1724] border border-[#1e2e47] text-blue-400 shrink-0">

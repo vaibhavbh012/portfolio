@@ -81,25 +81,23 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#172233]">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
-        {/* Left Column: Index & Title */}
-        <div className="lg:col-span-4 flex flex-col justify-start">
-          <div className="lg:sticky lg:top-24">
-            <span className="font-mono text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-800 select-none block mb-0.5 sm:mb-1">
-              04
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Technical Skills
-            </h2>
-            <p className="text-xs font-mono text-slate-400 mt-1 sm:mt-2">
-              Core technologies, ML architectures, and software toolbelt
-            </p>
-          </div>
+    <section id="skills" className="w-full py-16 px-4 sm:px-6 border-b border-[#172233]">
+      <div className="max-w-xl sm:max-w-2xl mx-auto flex flex-col">
+        {/* Section Header */}
+        <div className="text-center mb-8">
+          <span className="font-mono text-xs text-blue-400 font-bold uppercase tracking-widest block mb-1">
+            04 • Technical Toolbelt
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Skills & Competencies
+          </h2>
+          <p className="text-xs font-mono text-slate-400 mt-1">
+            Core technologies, ML architectures, and software stack
+          </p>
         </div>
 
-        {/* Right Column: Skills Matrix (1 Column on Mobile, 2 on Tablet/Desktop) */}
-        <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+        {/* Skills Matrix Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           {skillGroups.map((group, idx) => (
             <motion.div
               key={idx}

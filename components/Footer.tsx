@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowUp, Heart } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 
 export default function Footer() {
@@ -12,8 +12,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-10 px-4 sm:px-8 border-t border-[#172233] bg-[#070b12]">
-      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+    <footer className="w-full py-10 px-4 sm:px-6 border-t border-[#172233] bg-[#070b12]">
+      <div className="max-w-xl sm:max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500 text-center sm:text-left">
         <div>
           <p>© {new Date().getFullYear()} {personalInfo.name}. All rights reserved.</p>
           <p className="text-[11px] text-slate-600 mt-0.5">
@@ -23,7 +23,7 @@ export default function Footer() {
 
         <button
           onClick={scrollToTop}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0b1018] hover:bg-[#0f1724] border border-[#172233] hover:border-slate-600 text-slate-400 hover:text-white transition-colors"
+          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#0b1018] hover:bg-[#0f1724] border border-[#172233] hover:border-slate-600 text-slate-400 hover:text-white transition-colors"
         >
           <span>Back to Top</span>
           <ArrowUp className="w-3.5 h-3.5" />
