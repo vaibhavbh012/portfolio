@@ -48,24 +48,11 @@ export default function Hero() {
     <section id="home" className="w-full pt-28 pb-16 px-4 sm:px-6 flex flex-col items-center justify-center text-center border-b border-[#172233] bg-tech-grid">
       <div className="max-w-xl w-full mx-auto flex flex-col items-center">
         
-        {/* Status Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0b1018] border border-[#1e2e47] shadow-sm mb-6"
-        >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-          <span className="text-xs font-mono text-cyan-300 font-medium">
-            Open to AI & Data Science Roles
-          </span>
-        </motion.div>
-
         {/* Centered Profile Photo with 8.04 CGPA & Dynamic Replace */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
+          transition={{ duration: 0.4 }}
           className="relative mb-6"
         >
           <div className="relative p-2.5 rounded-3xl bg-[#0b1018] border border-[#1e2e47] shadow-2xl">
@@ -132,7 +119,7 @@ export default function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.15 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-2 leading-tight"
         >
           {personalInfo.name}
@@ -142,7 +129,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.15 }}
           className="text-base sm:text-lg font-mono text-blue-400 font-semibold mb-4"
         >
           Passionate about AI/ML & Data Science
@@ -152,7 +139,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.25 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg mb-6 font-normal"
         >
           {personalInfo.heroDescription}
@@ -162,7 +149,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
+          transition={{ duration: 0.4, delay: 0.25 }}
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#0b1018] border border-[#1e2e47] text-cyan-300 text-xs font-mono mb-6 shadow-sm"
         >
           <Cpu className="w-3.5 h-3.5 text-cyan-400" />
@@ -173,7 +160,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.35 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
           className="w-full max-w-sm flex flex-col gap-3 mb-8"
         >
           <a
@@ -198,7 +185,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.35 }}
           className="flex items-center justify-center gap-3"
         >
           <a
