@@ -1,12 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download, ArrowUpRight } from "lucide-react";
 import { GithubIcon, LinkedinIcon, LeetCodeIcon } from "@/components/Icons";
 import { portfolioData } from "@/data/portfolio";
-import { useProfileImage } from "./useProfileImage";
 
 const navLinks = [
   { name: "About", href: "#about", num: "01" },
@@ -20,7 +18,6 @@ const navLinks = [
 
 export default function Navbar() {
   const { personalInfo } = portfolioData;
-  const { profileImage } = useProfileImage();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -86,25 +83,11 @@ export default function Navbar() {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center gap-2.5 group cursor-pointer"
+          className="flex items-center gap-2 group cursor-pointer"
         >
-          <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-[#1e2e47] bg-[#0b1018] shrink-0">
-            <Image
-              src={profileImage}
-              alt={personalInfo.name}
-              fill
-              className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
-              sizes="32px"
-            />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-bold text-sm text-slate-100 group-hover:text-cyan-300 transition-colors">
-              {personalInfo.name}
-            </span>
-            <span className="text-[10px] font-mono text-cyan-400 -mt-0.5">
-              Data Science / AI
-            </span>
-          </div>
+          <span className="font-bold text-base sm:text-lg text-white font-mono tracking-tight group-hover:text-cyan-300 transition-colors">
+            Portfolio
+          </span>
         </a>
 
         {/* Right Action Controls */}
