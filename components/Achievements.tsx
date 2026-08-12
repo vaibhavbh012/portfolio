@@ -6,7 +6,6 @@ import {
   Trophy,
   Award,
   ExternalLink,
-  Code2,
 } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 

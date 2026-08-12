@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, MapPin } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 
 export default function Education() {

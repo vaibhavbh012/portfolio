@@ -6,8 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
-  ExternalLink,
-  Cpu,
 } from "lucide-react";
 import { GithubIcon } from "@/components/Icons";
 import { portfolioData, Project } from "@/data/portfolio";

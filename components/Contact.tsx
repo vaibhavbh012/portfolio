@@ -1,14 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import {
   Mail,
-  Phone,
   Send,
   Copy,
   Check,
-  MapPin,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { portfolioData } from "@/data/portfolio";

@@ -8,8 +8,6 @@ import {
   CheckCircle2,
   Cpu,
   Layers,
-  Sparkles,
-  Database,
   BarChart,
 } from "lucide-react";
 import { GithubIcon } from "@/components/Icons";
