@@ -541,9 +541,6 @@ export const portfolioData: PortfolioData = {
       gradeLabel: "CGPA",
       period: "Aug 2023 – Present",
       location: "Dehradun, India",
-      highlights: [
-        "Focus on Machine Learning, Deep Learning, Python, SQL, and Data Analytics.",
-      ],
     },
     {
       institution: "Arwachin Bharti Bhawan Sr. Sec. School",
