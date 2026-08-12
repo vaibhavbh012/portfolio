@@ -1,55 +1,56 @@
+"use client";
+
 import React from "react";
-import Navbar from "@/components/Navbar";
-import NeuralBackground from "@/components/NeuralBackground";
+import Sidebar from "@/components/Sidebar";
+import MobileNav from "@/components/MobileNav";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
-import About from "@/components/About";
 import Achievements from "@/components/Achievements";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#070b14] text-white selection:bg-blue-500/20 selection:text-blue-200">
-      {/* Subtle night-sky particles */}
-      <NeuralBackground />
+    <div className="min-h-screen bg-[#05070b] text-[#f1f5f9] flex flex-col lg:flex-row antialiased selection:bg-blue-600/30 selection:text-cyan-300">
+      {/* Persistent Left Sidebar (Desktop) */}
+      <Sidebar />
 
-      {/* Floating Header */}
-      <Navbar />
+      {/* Mobile Top Navigation Header */}
+      <MobileNav />
 
-      {/* Hero Section */}
-      <Hero />
+      {/* Main Content Scroll Area (Right Side on Desktop) */}
+      <main className="flex-1 lg:ml-64 xl:ml-72 min-w-0 min-h-screen flex flex-col bg-[#05070b]">
+        {/* Split-Screen Hero */}
+        <Hero />
 
-      {/* Experience Section */}
-      <Experience />
+        {/* Asymmetric 01 About Section */}
+        <About />
 
-      {/* Projects Section */}
-      <Projects />
+        {/* Stacked 02 Experience Section */}
+        <Experience />
 
-      {/* Skills Section */}
-      <Skills />
+        {/* Bento Grid 03 Projects Section (Centerpiece) */}
+        <Projects />
 
-      {/* About Section */}
-      <About />
+        {/* Technical 04 Skills Matrix Dashboard */}
+        <Skills />
 
-      {/* Achievements & Certifications */}
-      <Achievements />
+        {/* Credentials & 05 Achievements Section (LeetCode & Certs) */}
+        <Achievements />
 
-      {/* Education Section */}
-      <Education />
+        {/* Academic Profile 06 Education Section */}
+        <Education />
 
-      {/* Contact Section */}
-      <Contact />
+        {/* Split-Screen 07 Contact Section */}
+        <Contact />
 
-      {/* Footer */}
-      <Footer />
-
-      {/* Scroll to Top */}
-      <BackToTop />
-    </main>
+        {/* Minimalist Footer */}
+        <Footer />
+      </main>
+    </div>
   );
 }

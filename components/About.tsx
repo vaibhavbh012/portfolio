@@ -3,71 +3,109 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  GraduationCap,
-  BarChart3,
-  Bot,
   Code,
-  MapPin,
+  Database,
+  Brain,
+  Cpu,
+  BarChart3,
+  Terminal,
 } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 
 export default function About() {
-  const { personalInfo, aboutCards } = portfolioData;
+  const { personalInfo } = portfolioData;
 
-  const cardIcons: Record<string, React.ReactNode> = {
-    GraduationCap: <GraduationCap className="w-5 h-5 text-blue-400" />,
-    BarChart3: <BarChart3 className="w-5 h-5 text-cyan-400" />,
-    Bot: <Bot className="w-5 h-5 text-purple-400" />,
-    Code: <Code className="w-5 h-5 text-emerald-400" />,
-    MapPin: <MapPin className="w-5 h-5 text-rose-400" />,
-  };
+  const coreFocusAreas = [
+    {
+      icon: <Brain className="w-4 h-4 text-blue-400" />,
+      title: "Machine Learning",
+      description: "Supervised & Unsupervised pipelines, Ensemble methods, and predictive modeling.",
+    },
+    {
+      icon: <Cpu className="w-4 h-4 text-cyan-400" />,
+      title: "Deep Learning",
+      description: "Convolutional Neural Networks (CNNs), Transfer Learning, and Medical AI diagnosis.",
+    },
+    {
+      icon: <BarChart3 className="w-4 h-4 text-indigo-400" />,
+      title: "Data Science & Analytics",
+      description: "EDA, high-volume statistical analysis, feature engineering, and market intelligence.",
+    },
+    {
+      icon: <Terminal className="w-4 h-4 text-emerald-400" />,
+      title: "Python Engineering",
+      description: "Core algorithms, data structures, model training, and automated workflows.",
+    },
+    {
+      icon: <Database className="w-4 h-4 text-purple-400" />,
+      title: "SQL & Databases",
+      description: "Relational data extraction, schema management, and complex data querying.",
+    },
+    {
+      icon: <Code className="w-4 h-4 text-rose-400" />,
+      title: "NLP & Topic Mining",
+      description: "TF-IDF vectorization, LDA Topic Modeling, and unstructured text analysis.",
+    },
+  ];
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 relative">
-      <div className="max-w-xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
-            About Me
-          </h2>
-          <p className="text-slate-400 text-sm font-normal">
-            A glimpse into my journey & focus
-          </p>
+    <section id="about" className="py-20 px-4 sm:px-8 border-b border-[#172233]">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        {/* Left Column: Asymmetric Section Index & Title */}
+        <div className="lg:col-span-4 flex flex-col justify-start">
+          <div className="sticky top-24">
+            <span className="font-mono text-4xl sm:text-5xl font-extrabold text-slate-800 select-none block mb-1">
+              01
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              About
+            </h2>
+            <p className="text-xs font-mono text-slate-400 mt-2">
+              Background, focus areas, and technical core
+            </p>
+          </div>
         </div>
 
-        {/* Narrative Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="p-6 sm:p-7 rounded-3xl bg-[#0b101b] border border-slate-800 shadow-xl mb-6"
-        >
-          <p className="text-slate-300 text-sm leading-relaxed">
-            {personalInfo.aboutDescription}
-          </p>
-        </motion.div>
+        {/* Right Column: Narrative & Focus Cards */}
+        <div className="lg:col-span-8 space-y-8">
+          {/* Narrative Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="p-6 sm:p-7 rounded-2xl bg-[#0b1018] border border-[#172233] shadow-lg"
+          >
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              {personalInfo.aboutDescription}
+            </p>
+          </motion.div>
 
-        {/* Info Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {aboutCards.slice(0, 4).map((card, idx) => (
-            <div
-              key={idx}
-              className="p-4 rounded-2xl bg-[#0b101b] border border-slate-800/90 flex items-center gap-3.5"
-            >
-              <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 shrink-0">
-                {cardIcons[card.icon]}
-              </div>
-              <div className="min-w-0">
-                <h4 className="text-xs sm:text-sm font-bold text-white truncate">
-                  {card.title}
-                </h4>
-                <p className="text-[11px] text-slate-400 truncate">
-                  {card.badge || card.subtitle}
+          {/* Compact Information Blocks */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            {coreFocusAreas.map((area, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: idx * 0.05 }}
+                className="p-4 rounded-xl bg-[#0b1018] border border-[#172233] hover:border-[#1e2e47] transition-colors flex flex-col justify-between"
+              >
+                <div className="flex items-center gap-2.5 mb-2">
+                  <div className="p-1.5 rounded-lg bg-[#0f1724] border border-[#1e2e47]">
+                    {area.icon}
+                  </div>
+                  <h3 className="text-sm font-bold text-white font-mono">
+                    {area.title}
+                  </h3>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed font-normal">
+                  {area.description}
                 </p>
-              </div>
-            </div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

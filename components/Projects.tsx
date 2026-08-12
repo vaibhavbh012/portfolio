@@ -2,10 +2,13 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  ChevronLeft,
-  ChevronRight,
+  ExternalLink,
+  Cpu,
+  Layers,
+  ArrowUpRight,
+  Activity,
 } from "lucide-react";
 import { GithubIcon } from "@/components/Icons";
 import { portfolioData, Project } from "@/data/portfolio";
@@ -13,153 +16,232 @@ import ProjectModal from "./ProjectModal";
 
 export default function Projects() {
   const { projects } = portfolioData;
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const nextProject = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  const current = projects[currentIndex];
+  const featured = projects[0]; // Automated Skin Disease Detection System
+  const secondary = projects.slice(1); // Job Market + Alzheimer's
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 relative">
-      <div className="max-w-xl mx-auto">
+    <section id="projects" className="py-20 px-4 sm:px-8 border-b border-[#172233]">
+      <div className="max-w-5xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
-            Projects
-          </h2>
-          <p className="text-slate-400 text-sm font-normal">
-            Some of my recent work
-          </p>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-[#172233]">
+          <div>
+            <span className="font-mono text-3xl sm:text-4xl font-extrabold text-slate-800 select-none block mb-1">
+              03
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Featured Projects
+            </h2>
+            <p className="text-xs font-mono text-slate-400 mt-1">
+              Applied Machine Learning, Computer Vision, and NLP architectures
+            </p>
+          </div>
         </div>
 
-        {/* Portrait Project Card */}
-        <div className="relative">
-          <AnimatePresence mode="wait">
+        {/* Bento Grid Container */}
+        <div className="space-y-6">
+          {/* Large Bento Card: Featured Project (Skin Disease Detection) */}
+          {featured && (
             <motion.div
-              key={current.id}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-              className="rounded-3xl bg-[#0b101b] border border-slate-800/90 shadow-2xl overflow-hidden flex flex-col"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="rounded-2xl bg-[#0b1018] border border-[#172233] hover:border-[#1e2e47] shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 group transition-all"
             >
-              {/* Project Preview Image / Container */}
-              <div className="relative w-full h-52 sm:h-60 bg-slate-950 overflow-hidden border-b border-slate-800/80">
-                {current.image ? (
+              {/* Image Banner (Span 6) */}
+              <div className="lg:col-span-6 relative h-64 sm:h-72 lg:h-auto min-h-[260px] bg-slate-950 overflow-hidden border-b lg:border-b-0 lg:border-r border-[#172233]">
+                {featured.image && (
                   <Image
-                    src={current.image}
-                    alt={current.title}
+                    src={featured.image}
+                    alt={featured.title}
                     fill
-                    className="object-cover object-center hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, 576px"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-slate-600 font-mono text-xs">
-                    [ Interactive AI Demo ]
+                )}
+                {/* Metric Overlay */}
+                {featured.metric && (
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#070b12]/90 backdrop-blur-md border border-[#1e2e47] text-cyan-300 text-xs font-mono font-bold flex items-center gap-1.5 shadow-lg">
+                    <Activity className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>{featured.metric.value} {featured.metric.label}</span>
                   </div>
                 )}
-
-                {/* Top Badge */}
-                {current.metric && (
-                  <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-700 text-[11px] font-mono text-blue-400 font-semibold shadow-lg">
-                    {current.metric.value} {current.metric.label}
-                  </div>
-                )}
+                <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-md bg-blue-950/80 border border-blue-500/30 text-blue-400 text-[10px] font-mono font-semibold">
+                  {featured.category}
+                </div>
               </div>
 
-              {/* Card Body */}
-              <div className="p-6 sm:p-7 flex flex-col">
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2">
-                  {current.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-normal">
-                  {current.description}
-                </p>
-
-                {/* Tech Pills */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {current.techStack.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300 font-medium"
-                    >
-                      {tech}
+              {/* Content (Span 6) */}
+              <div className="lg:col-span-6 p-6 sm:p-7 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="px-2 py-0.5 rounded-md bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono font-semibold">
+                      Featured Architecture
                     </span>
-                  ))}
+                    <span className="text-xs font-mono text-slate-500">{featured.date}</span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1 mb-1 group-hover:text-cyan-300 transition-colors">
+                    {featured.title}
+                  </h3>
+
+                  {featured.subtitle && (
+                    <p className="text-xs font-mono text-blue-400 mb-3">
+                      {featured.subtitle}
+                    </p>
+                  )}
+
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5 font-normal">
+                    {featured.description}
+                  </p>
+
+                  {/* Highlights */}
+                  <ul className="space-y-1.5 mb-5">
+                    {featured.highlights.slice(0, 3).map((high, hIdx) => (
+                      <li
+                        key={hIdx}
+                        className="text-xs text-slate-400 flex items-start gap-2 leading-relaxed"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5 shrink-0" />
+                        <span>{high}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {featured.techStack.map((tech, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2.5 py-1 rounded-lg bg-[#070b12] border border-[#172233] text-[11px] font-mono text-slate-300 font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex items-center gap-3">
+                {/* CTAs */}
+                <div className="flex items-center gap-3 pt-4 border-t border-[#172233]">
                   <button
-                    onClick={() => setSelectedProject(current)}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-semibold text-xs transition-all hover:scale-[1.02] active:scale-[0.98]"
+                    onClick={() => setSelectedProject(featured)}
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-mono font-semibold text-xs transition-all hover:scale-[1.02] active:scale-[0.98]"
                   >
-                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                    <span>Demo / Details</span>
+                    <Cpu className="w-3.5 h-3.5" />
+                    <span>Demo / Architecture</span>
                   </button>
 
-                  {current.githubUrl && (
+                  {featured.githubUrl && (
                     <a
-                      href={current.githubUrl}
+                      href={featured.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 text-slate-300 hover:text-white font-semibold text-xs transition-all hover:scale-[1.02] active:scale-[0.98]"
+                      className="p-2.5 rounded-xl bg-[#070b12] hover:bg-[#0f1724] border border-[#172233] hover:border-slate-500 text-slate-300 hover:text-white transition-all"
+                      aria-label="View Code on GitHub"
+                      title="View GitHub Repository"
                     >
                       <GithubIcon className="w-4 h-4" />
-                      <span>Code</span>
                     </a>
                   )}
                 </div>
               </div>
             </motion.div>
-          </AnimatePresence>
+          )}
 
-          {/* Carousel Pagination Controls at Bottom */}
-          <div className="flex items-center justify-center gap-6 mt-8">
-            <button
-              onClick={prevProject}
-              className="p-2.5 rounded-full bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white transition-colors"
-              aria-label="Previous project"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
+          {/* Secondary Bento Grid (2 Columns) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {secondary.map((project, idx) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                className="rounded-2xl bg-[#0b1018] border border-[#172233] hover:border-[#1e2e47] shadow-xl overflow-hidden flex flex-col justify-between group transition-all"
+              >
+                <div>
+                  {/* Top Image Preview */}
+                  <div className="relative w-full h-44 bg-slate-950 overflow-hidden border-b border-[#172233]">
+                    {project.image && (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    )}
+                    {project.metric && (
+                      <div className="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-md bg-[#070b12]/90 backdrop-blur-md border border-[#1e2e47] text-cyan-300 text-[11px] font-mono font-bold">
+                        {project.metric.value} {project.metric.label}
+                      </div>
+                    )}
+                    <div className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-blue-950/80 border border-blue-500/30 text-blue-400 text-[10px] font-mono font-semibold">
+                      {project.category}
+                    </div>
+                  </div>
 
-            {/* Indicator Dots */}
-            <div className="flex items-center gap-2">
-              {projects.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    currentIndex === idx
-                      ? "w-6 bg-blue-500"
-                      : "w-2 bg-slate-700 hover:bg-slate-500"
-                  }`}
-                  aria-label={`Go to project ${idx + 1}`}
-                />
-              ))}
-            </div>
+                  {/* Body */}
+                  <div className="p-5 sm:p-6">
+                    <h3 className="text-lg font-bold text-white tracking-tight mb-1 group-hover:text-cyan-300 transition-colors">
+                      {project.title}
+                    </h3>
+                    {project.subtitle && (
+                      <p className="text-xs font-mono text-blue-400 mb-2.5">
+                        {project.subtitle}
+                      </p>
+                    )}
 
-            <button
-              onClick={nextProject}
-              className="p-2.5 rounded-full bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white transition-colors"
-              aria-label="Next project"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4 line-clamp-3 font-normal">
+                      {project.description}
+                    </p>
+
+                    {/* Tech Badges */}
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {project.techStack.slice(0, 5).map((tech, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="px-2 py-0.5 rounded-md bg-[#070b12] border border-[#172233] text-[11px] font-mono text-slate-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footer Buttons */}
+                <div className="p-5 sm:p-6 pt-0 flex items-center gap-2.5">
+                  <button
+                    onClick={() => setSelectedProject(project)}
+                    className="flex-1 flex items-center justify-center gap-2 py-2 px-3.5 rounded-xl bg-[#0f1724] hover:bg-slate-800 border border-[#1e2e47] text-slate-200 hover:text-white font-mono font-medium text-xs transition-all"
+                  >
+                    <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Details</span>
+                  </button>
+
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-xl bg-[#070b12] hover:bg-[#0f1724] border border-[#172233] hover:border-slate-500 text-slate-400 hover:text-white transition-all"
+                      aria-label="View Code on GitHub"
+                      title="View GitHub Repository"
+                    >
+                      <GithubIcon className="w-4 h-4" />
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Deep-Dive Technical Modal */}
+      {/* Project Details Modal */}
       <ProjectModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}

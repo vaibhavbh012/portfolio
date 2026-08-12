@@ -6,27 +6,36 @@ import {
   Trophy,
   Award,
   ExternalLink,
+  Code,
+  CheckCircle,
 } from "lucide-react";
+import { LeetCodeIcon } from "@/components/Icons";
 import { portfolioData } from "@/data/portfolio";
 
 export default function Achievements() {
   const { achievements, certifications } = portfolioData;
 
   return (
-    <section id="achievements" className="py-20 px-4 sm:px-6 relative">
-      <div className="max-w-xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
-            Achievements
-          </h2>
-          <p className="text-slate-400 text-sm font-normal">
-            Coding milestones & certifications
-          </p>
+    <section id="achievements" className="py-20 px-4 sm:px-8 border-b border-[#172233]">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        {/* Left Column: Index & Title */}
+        <div className="lg:col-span-4 flex flex-col justify-start">
+          <div className="sticky top-24">
+            <span className="font-mono text-4xl sm:text-5xl font-extrabold text-slate-800 select-none block mb-1">
+              05
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Credentials & Achievements
+            </h2>
+            <p className="text-xs font-mono text-slate-400 mt-2">
+              Competitive programming benchmarks and verified certifications
+            </p>
+          </div>
         </div>
 
-        {/* LeetCode Milestone Card */}
-        <div className="space-y-6">
+        {/* Right Column: Achievements & Certs Cards */}
+        <div className="lg:col-span-8 space-y-6">
+          {/* LeetCode Competitive Programming Card */}
           {achievements.map((ach, idx) => (
             <motion.div
               key={idx}
@@ -34,16 +43,24 @@ export default function Achievements() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="p-6 rounded-3xl bg-[#0b101b] border border-amber-500/30 shadow-xl"
+              className="p-6 sm:p-7 rounded-2xl bg-[#0b1018] border border-[#172233] hover:border-[#1e2e47] shadow-xl"
             >
-              <div className="flex items-center justify-between gap-3 mb-4">
-                <div className="flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-amber-400" />
-                  <h3 className="text-base font-bold text-white">
-                    {ach.title}
-                  </h3>
+              <div className="flex items-center justify-between gap-3 mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-xl bg-amber-950/40 border border-amber-500/30 text-amber-400">
+                    <LeetCodeIcon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-bold text-white font-mono">
+                      {ach.title}
+                    </h3>
+                    <span className="text-xs font-mono text-amber-400 font-semibold">
+                      DSA Mastery
+                    </span>
+                  </div>
                 </div>
-                <span className="text-xs text-amber-400 font-mono font-bold px-2.5 py-1 rounded-full bg-amber-950/60 border border-amber-500/30">
+
+                <span className="px-3 py-1 rounded-full bg-amber-950/60 border border-amber-500/40 text-amber-300 font-mono text-xs font-bold">
                   {ach.metric}
                 </span>
               </div>
@@ -52,23 +69,25 @@ export default function Achievements() {
                 {ach.description}
               </p>
 
-              <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800 mb-3">
+              {/* Topics */}
+              <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#172233] mb-4">
                 {ach.topics.map((topic, tIdx) => (
                   <span
                     key={tIdx}
-                    className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-mono text-slate-300"
+                    className="px-2.5 py-1 rounded-lg bg-[#070b12] border border-[#172233] text-[11px] font-mono text-slate-300 font-medium"
                   >
                     {topic}
                   </span>
                 ))}
               </div>
 
+              {/* Action */}
               {ach.link && (
                 <a
                   href={ach.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-amber-400 hover:text-amber-300 font-semibold font-mono"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300 font-semibold transition-colors"
                 >
                   <span>View LeetCode Profile</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -77,31 +96,41 @@ export default function Achievements() {
             </motion.div>
           ))}
 
-          {/* Certifications Header */}
-          <div className="pt-4">
-            <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+          {/* Certifications List Header */}
+          <div className="pt-2">
+            <h3 className="text-sm font-bold font-mono text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
               <Award className="w-4 h-4 text-blue-400" />
-              <span>Certifications</span>
+              <span>Verified Industry Certifications</span>
             </h3>
 
             <div className="space-y-3">
               {certifications.map((cert, idx) => (
-                <div
+                <motion.div
                   key={idx}
-                  className="p-4 sm:p-5 rounded-2xl bg-[#0b101b] border border-slate-800/90 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: idx * 0.05 }}
+                  className="p-4 sm:p-5 rounded-xl bg-[#0b1018] border border-[#172233] hover:border-[#1e2e47] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 transition-colors"
                 >
-                  <div>
-                    <h4 className="text-sm font-bold text-white">
-                      {cert.title}
-                    </h4>
-                    <p className="text-xs text-slate-400 font-mono mt-0.5">
-                      {cert.issuer}
-                    </p>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-[#0f1724] border border-[#1e2e47] text-blue-400 shrink-0">
+                      <CheckCircle className="w-4 h-4 text-cyan-400" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-white font-mono">
+                        {cert.title}
+                      </h4>
+                      <p className="text-xs font-mono text-slate-400 mt-0.5">
+                        {cert.issuer}
+                      </p>
+                    </div>
                   </div>
-                  <span className="text-xs font-mono text-emerald-400 self-start sm:self-auto px-2.5 py-0.5 rounded-full bg-emerald-950/50 border border-emerald-500/30">
+
+                  <span className="text-xs font-mono text-cyan-300 self-start sm:self-auto px-2.5 py-0.5 rounded-full bg-cyan-950/60 border border-cyan-500/30">
                     {cert.badge}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

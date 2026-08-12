@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import {
-  Terminal,
-  BrainCircuit,
+  Code,
+  Brain,
   Layers,
+  Database,
   Wrench,
   BookOpen,
 } from "lucide-react";
@@ -13,76 +14,127 @@ import { portfolioData } from "@/data/portfolio";
 
 export default function Skills() {
   const { skillCategories } = portfolioData;
-  const [activeCategory, setActiveCategory] = useState(0);
 
-  const categoryIcons: Record<string, React.ReactNode> = {
-    Terminal: <Terminal className="w-4 h-4 text-blue-400" />,
-    BrainCircuit: <BrainCircuit className="w-4 h-4 text-purple-400" />,
-    Layers: <Layers className="w-4 h-4 text-cyan-400" />,
-    Wrench: <Wrench className="w-4 h-4 text-emerald-400" />,
-    BookOpen: <BookOpen className="w-4 h-4 text-amber-400" />,
-  };
+  const skillGroups = [
+    {
+      title: "Programming Languages",
+      icon: <Code className="w-4 h-4 text-blue-400" />,
+      skills: ["Python", "C++", "SQL"],
+    },
+    {
+      title: "Machine Learning & Deep Learning",
+      icon: <Brain className="w-4 h-4 text-cyan-400" />,
+      skills: [
+        "Supervised Learning",
+        "Unsupervised Learning",
+        "Regression",
+        "Classification",
+        "Feature Engineering",
+        "Model Evaluation",
+        "Ensemble Learning",
+        "CNN",
+        "Transfer Learning",
+        "NLP",
+      ],
+    },
+    {
+      title: "Frameworks & Libraries",
+      icon: <Layers className="w-4 h-4 text-indigo-400" />,
+      skills: [
+        "TensorFlow",
+        "PyTorch",
+        "Keras",
+        "Scikit-learn",
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn",
+      ],
+    },
+    {
+      title: "Databases",
+      icon: <Database className="w-4 h-4 text-purple-400" />,
+      skills: ["MySQL"],
+    },
+    {
+      title: "Developer Tools & Environments",
+      icon: <Wrench className="w-4 h-4 text-emerald-400" />,
+      skills: [
+        "Power BI",
+        "Git",
+        "GitHub",
+        "Jupyter Notebook",
+        "Google Colab",
+        "VS Code",
+      ],
+    },
+    {
+      title: "Core Computer Science Coursework",
+      icon: <BookOpen className="w-4 h-4 text-rose-400" />,
+      skills: [
+        "Data Structures and Algorithms",
+        "Database Management Systems",
+        "Operating Systems",
+        "Computer Networks",
+        "Object-Oriented Programming (OOP)",
+        "Machine Learning",
+      ],
+    },
+  ];
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 relative">
-      <div className="max-w-xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
-            Skills
-          </h2>
-          <p className="text-slate-400 text-sm font-normal">
-            Technologies I work with
-          </p>
+    <section id="skills" className="py-20 px-4 sm:px-8 border-b border-[#172233]">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        {/* Left Column: Index & Title */}
+        <div className="lg:col-span-4 flex flex-col justify-start">
+          <div className="sticky top-24">
+            <span className="font-mono text-4xl sm:text-5xl font-extrabold text-slate-800 select-none block mb-1">
+              04
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Technical Skills
+            </h2>
+            <p className="text-xs font-mono text-slate-400 mt-2">
+              Core technologies, ML architectures, and software toolbelt
+            </p>
+          </div>
         </div>
 
-        {/* Category Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-1.5 p-1 rounded-2xl bg-slate-900/90 border border-slate-800 mb-8">
-          {skillCategories.map((cat, idx) => (
-            <button
+        {/* Right Column: Skills Matrix */}
+        <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {skillGroups.map((group, idx) => (
+            <motion.div
               key={idx}
-              onClick={() => setActiveCategory(idx)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${
-                activeCategory === idx
-                  ? "bg-blue-600 text-white font-semibold shadow-md"
-                  : "text-slate-400 hover:text-white"
-              }`}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: idx * 0.05 }}
+              className="p-5 rounded-2xl bg-[#0b1018] border border-[#172233] hover:border-[#1e2e47] transition-all flex flex-col justify-between"
             >
-              {cat.title.split(" ")[0]}
-            </button>
+              <div>
+                <div className="flex items-center gap-2.5 mb-3.5 pb-2.5 border-b border-[#172233]">
+                  <div className="p-1.5 rounded-lg bg-[#0f1724] border border-[#1e2e47]">
+                    {group.icon}
+                  </div>
+                  <h3 className="text-sm font-bold text-white font-mono">
+                    {group.title}
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {group.skills.map((skill, sIdx) => (
+                    <span
+                      key={sIdx}
+                      className="px-2.5 py-1 rounded-lg bg-[#070b12] border border-[#172233] text-xs font-mono text-slate-300 font-medium hover:border-slate-600 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
-
-        {/* Active Category Skills Card */}
-        <motion.div
-          key={activeCategory}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.25 }}
-          className="p-6 sm:p-7 rounded-3xl bg-[#0b101b] border border-slate-800 shadow-xl"
-        >
-          <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-slate-800/80">
-            {categoryIcons[skillCategories[activeCategory].icon]}
-            <h3 className="text-base font-bold text-white">
-              {skillCategories[activeCategory].title}
-            </h3>
-          </div>
-
-          <div className="flex flex-wrap gap-2.5">
-            {skillCategories[activeCategory].skills.map((skill, idx) => (
-              <span
-                key={idx}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium transition-colors ${
-                  skill.highlight
-                    ? "bg-slate-900 text-blue-300 border border-blue-500/30"
-                    : "bg-slate-900/60 text-slate-300 border border-slate-800"
-                }`}
-              >
-                {skill.name}
-              </span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
