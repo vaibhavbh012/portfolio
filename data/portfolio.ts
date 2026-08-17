@@ -224,6 +224,15 @@ export const portfolioData: PortfolioData = {
       ],
     },
     {
+      title: "Generative AI",
+      icon: "Sparkles",
+      skills: [
+        { name: "LLMs", highlight: true },
+        { name: "RAG", highlight: true },
+        { name: "Prompt Engineering", highlight: true },
+      ],
+    },
+    {
       title: "Technologies & Frameworks",
       icon: "Layers",
       skills: [
@@ -247,6 +256,13 @@ export const portfolioData: PortfolioData = {
         { name: "Jupyter Notebook" },
         { name: "Google Colab" },
         { name: "VS Code" },
+      ],
+    },
+    {
+      title: "Backend / API",
+      icon: "Server",
+      skills: [
+        { name: "FastAPI", highlight: true },
       ],
     },
     {

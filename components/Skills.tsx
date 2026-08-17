@@ -9,6 +9,8 @@ import {
   Database,
   Wrench,
   BookOpen,
+  Sparkles,
+  Server,
 } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 
@@ -36,6 +38,11 @@ export default function Skills() {
       ],
     },
     {
+      title: "Generative AI",
+      icon: <Sparkles className="w-4 h-4 text-fuchsia-400 shrink-0" />,
+      skills: ["LLMs", "RAG", "Prompt Engineering"],
+    },
+    {
       title: "Frameworks & Libraries",
       icon: <Layers className="w-4 h-4 text-indigo-400 shrink-0" />,
       skills: [
@@ -53,6 +60,11 @@ export default function Skills() {
       title: "Databases",
       icon: <Database className="w-4 h-4 text-purple-400 shrink-0" />,
       skills: ["MySQL"],
+    },
+    {
+      title: "Backend / API",
+      icon: <Server className="w-4 h-4 text-teal-400 shrink-0" />,
+      skills: ["FastAPI"],
     },
     {
       title: "Developer Tools & Environments",
