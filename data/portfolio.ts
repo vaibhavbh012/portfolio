@@ -331,7 +331,8 @@ export const portfolioData: PortfolioData = {
       "Compared Linear Regression, Random Forest, and XGBoost models.",
       "Engineered features for salary prediction across experience tiers.",
     ],
-    githubUrl: "https://github.com/vaibhavbh012",
+    githubUrl: "https://github.com/vaibhavbh012/job-market-trend-analysis-system",
+    liveDemoUrl: "https://job-market-trend-analysis-system-ew2wk94i8.vercel.app/",
     details: {
       dataset: "97,682+ Indian job postings across major IT hubs.",
       pipeline: [
@@ -428,7 +429,8 @@ export const portfolioData: PortfolioData = {
         "Applied NLP techniques: TF-IDF and LDA Topic Modeling.",
         "Compared Linear Regression, Random Forest, and XGBoost Regression.",
       ],
-      githubUrl: "https://github.com/vaibhavbh012",
+      githubUrl: "https://github.com/vaibhavbh012/job-market-trend-analysis-system",
+      liveDemoUrl: "https://job-market-trend-analysis-system-ew2wk94i8.vercel.app/",
       details: {
         architecture: "TF-IDF + LDA Feature Extraction -> Ensemble Gradient Boosted Tree (XGBoost)",
         dataset: "97,682+ job postings corpus.",
