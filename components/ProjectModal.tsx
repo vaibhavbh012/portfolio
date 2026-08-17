@@ -161,9 +161,21 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </a>
             )}
 
+            {project.liveDemoUrl && (
+              <a
+                href={project.liveDemoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 sm:flex-initial min-h-[42px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-mono font-semibold transition-colors shadow-lg"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>Live Demo</span>
+              </a>
+            )}
+
             <button
               onClick={onClose}
-              className="flex-1 sm:flex-initial min-h-[42px] px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-mono font-semibold transition-colors"
+              className="flex-1 sm:flex-initial min-h-[42px] px-5 py-2.5 rounded-xl bg-[#070b12] hover:bg-[#0f1724] border border-[#172233] text-slate-200 text-xs font-mono font-semibold transition-colors"
             >
               Close
             </button>

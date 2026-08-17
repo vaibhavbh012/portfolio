@@ -173,6 +173,18 @@ export default function FeaturedProject() {
                   <GithubIcon className="w-4 h-4 text-slate-300" />
                   <span>GitHub Repository</span>
                 </a>
+
+                {featuredProject.liveDemoUrl && (
+                  <a
+                    href={featuredProject.liveDemoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs transition-all hover:-translate-y-0.5 shadow-lg shadow-blue-500/20"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>Live Demo</span>
+                  </a>
+                )}
               </div>
             </div>
 
